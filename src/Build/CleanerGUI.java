@@ -22,11 +22,13 @@ class CleanerGUI implements gridPaneAlignment{
 		
 		GridPane gridPane = new GridPane();
 		
+		gridPane.setId("CleanerGUI");
+		
 		gridPaneAlignment.gridPaneAlign(gridPane);
 		
-		ColumnConstraints leftColumn = new ColumnConstraints(100, 130, 450);
+		ColumnConstraints leftColumn = new ColumnConstraints();
 		leftColumn.setHalignment(HPos.RIGHT);
-		ColumnConstraints rightColumn = new ColumnConstraints(100, 275, 450);
+		ColumnConstraints rightColumn = new ColumnConstraints();
 		gridPane.getColumnConstraints().addAll(leftColumn, rightColumn);
 		
 		Text winUpTxt = new Text("Windows Update Cleanup");

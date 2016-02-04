@@ -1,5 +1,6 @@
 package Build;
 
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 
@@ -10,6 +11,8 @@ class StartButtonGUI implements gridPaneAlignment {
 		GridPane gridPane = new GridPane();
 		
 		gridPaneAlignment.gridPaneAlign(gridPane);
+		
+		gridPane.setAlignment(Pos.BOTTOM_CENTER);
 		
 		//getButtonStart().setText("Start");
 		getButtonStart().setId("start-button");

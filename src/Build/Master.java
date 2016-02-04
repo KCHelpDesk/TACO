@@ -5,11 +5,9 @@ import javafx.application.Application;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -54,14 +52,10 @@ public class Master extends Application{
 		primaryStage.setTitle("T.A.C.O.");
 		
 		BorderPane borderpane = new BorderPane();
-		
-		GridPane gridPane = new GridPane();
-		gridPane.add(CleanerGUI.createGUI(), 0, 0);
-		gridPane.setAlignment(Pos.CENTER);
-		
+
 		borderpane.setTop(TopBannerGUI.createGUI());
 		borderpane.setLeft(SysInfoGUI.createGUI());
-		borderpane.setRight(gridPane);
+		borderpane.setRight(CleanerGUI.createGUI());
 		borderpane.setBottom(StartButtonGUI.createGUI());
 		
 		borderpane.setOnMousePressed(new EventHandler<MouseEvent>() {			

@@ -28,9 +28,11 @@ class SysInfoGUI implements gridPaneAlignment{
 		 */
 		GridPane gridpane = new GridPane();
 		
+		gridpane.setId("SysInfoGUI");
+		
 		//Setting alignment
 		gridPaneAlignment.gridPaneAlign(gridpane);
-		gridpane.setAlignment(Pos.TOP_CENTER);
+		gridpane.setAlignment(Pos.CENTER);
 		
 		/**
 		 * Column constraints to set the min, pref and max width for the columns.

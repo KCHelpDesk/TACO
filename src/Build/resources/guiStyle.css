@@ -6,9 +6,15 @@
 }
 
 #banner {
-	-fx-scale-x: 50%;
-	-fx-scale-y: 50%;
-	-fx-alignment: center;
+	-fx-padding: 0;
+}
+
+#SysInfoGUI {
+	-fx-padding: 10px;
+}
+
+#CleanerGUI {
+	-fx-margin-right: 30px;
 }
 
 .borderpane {
