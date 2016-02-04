@@ -5,6 +5,12 @@
 	*/
 }
 
+#banner {
+	-fx-scale-x: 50%;
+	-fx-scale-y: 50%;
+	-fx-alignment: center;
+}
+
 .borderpane {
 	-fx-background-color: #990099;
 }
