@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -52,7 +53,8 @@ public class Master extends Application{
 		primaryStage.setTitle("T.A.C.O.");
 		
 		BorderPane borderpane = new BorderPane();
-
+		
+		
 		borderpane.setTop(TopBannerGUI.createGUI());
 		borderpane.setLeft(SysInfoGUI.createGUI());
 		borderpane.setRight(CleanerGUI.createGUI());

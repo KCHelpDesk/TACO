@@ -5,6 +5,18 @@
 	*/
 }
 
+#banner {
+	-fx-padding: 0;
+}
+
+#SysInfoGUI {
+	-fx-padding: 10px;
+}
+
+#CleanerGUI {
+	-fx-margin-right: 30px;
+}
+
 .borderpane {
 	-fx-background-color: #990099;
 }
@@ -33,9 +45,6 @@
 	-fx-color: #ffffff;
 }
 
-. {
-	-fx-alignment: center;
-}
 
 #exit-button {
 	-fx-graphic: url('file:src/Build/resources/img/exit.png');

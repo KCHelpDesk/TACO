@@ -45,9 +45,6 @@
 	-fx-color: #ffffff;
 }
 
-. {
-	-fx-alignment: center;
-}
 
 #exit-button {
 	-fx-graphic: url('file:src/Build/resources/img/exit.png');

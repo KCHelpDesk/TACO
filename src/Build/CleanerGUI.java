@@ -1,6 +1,7 @@
 package Build;
 
 import javafx.geometry.HPos;
+import javafx.geometry.Pos;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.ColumnConstraints;
@@ -25,7 +26,7 @@ class CleanerGUI implements gridPaneAlignment{
 		gridPane.setId("CleanerGUI");
 		
 		gridPaneAlignment.gridPaneAlign(gridPane);
-		
+				
 		ColumnConstraints leftColumn = new ColumnConstraints();
 		leftColumn.setHalignment(HPos.RIGHT);
 		ColumnConstraints rightColumn = new ColumnConstraints();
