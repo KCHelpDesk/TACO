@@ -1,6 +1,17 @@
 package Build;
 
+import java.io.BufferedOutputStream;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.List;
+
+import javax.print.attribute.standard.OutputDeviceAssigned;
 
 public class ModReg {
 	static ArrayList<String> regKeys = new ArrayList<String>();
@@ -110,6 +121,34 @@ public class ModReg {
 	}
 
 	public static void buildAndExecuteBat() {
+		buildBat();
+		
+	}
+	
+	static void buildBat() {
+		File batFile = new File("resources/execute.bat");
+		Path deleteStateFlagsPath = new File("resources/deleteStateFlags.taco").toPath();
+		PrintWriter output = null;
+		try {
+			output = new PrintWriter(batFile);
+			for (String regKeys : getRegKeys()){
+				output.write(regKeys);
+				System.out.println(regKeys);
+			}
+			output.write("cleanmgr /d %SYSTEMROOT% /sagerun:5000");
+			List<String> deleteStateFlags = Files.readAllLines(deleteStateFlagsPath);
+			for (String deleteSFlags : deleteStateFlags) {
+				output.write(deleteSFlags);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			output.close();
+		}
+	}
+	
+	static void executeBat() {
 		
 	}
 
