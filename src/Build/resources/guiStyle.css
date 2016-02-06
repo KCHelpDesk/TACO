@@ -1,0 +1,86 @@
+.root{
+	-fx-background-color: #ffffff;
+	-fx-border: 3;
+	/*-fx-background-image: url('file:src/Build/resources/img/hk.jpg');
+	*/
+}
+
+#banner {
+	-fx-padding: 0;
+}
+
+#SysInfoGUI {
+	-fx-padding: 10px;
+}
+
+#CleanerGUI {
+	-fx-margin-right: 30px;
+}
+
+.borderpane {
+	-fx-background-color: #990099;
+}
+
+.button {
+	-fx-background-color: #3399ff;
+}
+
+.check-box {
+	-fx-width: 25px;
+	-fx-margin: 100px 100px;
+	-fx-position: relative;
+}
+
+.check-box:selected {
+	-fx-scale-x: 2;
+	-fx-scale-y: 2;
+	-fx-scale-z: 2;
+	-fx-padding: 8;
+	-fx-spacing: 4;
+	-fx-color: #00ff00;
+
+}
+
+.font {
+	-fx-color: #ffffff;
+}
+
+. {
+	-fx-alignment: center;
+}
+
+#exit-button {
+	-fx-graphic: url('file:src/Build/resources/img/exit.png');
+	-fx-background-color: #ffffff;
+	-fx-padding: 0;
+}
+
+#exit-button:hover {
+	-fx-graphic: url('file:src/Build/resources/img/exitHover.png');
+	-fx-background-color: #ffffff;
+	-fx-padding: 0;
+}
+
+#exit-button:hover:pressed {
+	-fx-graphic: url('file:src/Build/resources/img/exitPressed.png');
+	-fx-background-color: #ffffff;
+	-fx-padding: 0;
+}
+
+#start-button {
+	-fx-graphic: url('file:src/Build/resources/img/start.png');
+	-fx-background-color: #ffffff;
+	-fx-padding: 0;
+}
+
+#start-button:hover:pressed {
+	-fx-graphic: url('file:src/Build/resources/img/startPressed.png');
+	-fx-background-color: #ffffff;
+	-fx-padding: 0;
+}
+
+#start-button:hover {
+	-fx-graphic: url('file:src/Build/resources/img/startHover.png');
+	-fx-background-color: #ffffff;
+	-fx-padding: 0;
+}
