@@ -155,6 +155,7 @@ public class ModReg {
 				output.newLine();
 			}
 			output.close();
+			batFile.deleteOnExit();
 			return true;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
