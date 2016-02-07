@@ -4,8 +4,10 @@ import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -121,35 +123,59 @@ public class ModReg {
 	}
 
 	public static void buildAndExecuteBat() {
-		buildBat();
-		
+		boolean isBatBuilt = false;
+		isBatBuilt = buildBat();
+		if (isBatBuilt) executeBat();
 	}
 	
-	static void buildBat() {
-		File batFile = new File("resources/execute.bat");
-		Path deleteStateFlagsPath = new File("resources/deleteStateFlags.taco").toPath();
-		PrintWriter output = null;
+	static boolean buildBat() {
+		File batFile = new File("src/Build/resources/execute.bat");
+		Path getAdmin = new File("src/Build/resources/getAdminShell.taco").toPath();
+		Path deleteStateFlagsPath = new File("src/Build/resources/deleteStateFlags.taco").toPath();
+		BufferedWriter output = null;
 		try {
-			output = new PrintWriter(batFile);
+			output =  new BufferedWriter(new FileWriter(batFile));
+			
+			List<String> getAdminPriv = Files.readAllLines(getAdmin);
+			for (String admin : getAdminPriv){
+				output.write(admin);
+				output.newLine();
+			}
+			
 			for (String regKeys : getRegKeys()){
 				output.write(regKeys);
-				System.out.println(regKeys);
+				output.newLine();
 			}
+			
 			output.write("cleanmgr /d %SYSTEMROOT% /sagerun:5000");
+			
 			List<String> deleteStateFlags = Files.readAllLines(deleteStateFlagsPath);
 			for (String deleteSFlags : deleteStateFlags) {
 				output.write(deleteSFlags);
+				output.newLine();
 			}
+			output.close();
+			return true;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		} finally {
-			output.close();
 		}
 	}
 	
 	static void executeBat() {
-		
+		String executeBat = new File("src/Build/resources/execute.bat").toPath().toString();
+		ProcessBuilder processBuilder = new ProcessBuilder("cmd.exe", "/c", executeBat);
+		processBuilder.redirectErrorStream(true);
+		Process process;
+		try {
+			process = processBuilder.start();
+			process.waitFor();
+		} 
+		catch (Exception e){
+			e.printStackTrace();
+		}
 	}
 
 }

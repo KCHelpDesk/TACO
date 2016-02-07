@@ -1,7 +1,6 @@
 package Build;
 
 import javafx.geometry.HPos;
-import javafx.geometry.Pos;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.ColumnConstraints;

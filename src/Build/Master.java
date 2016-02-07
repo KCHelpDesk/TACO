@@ -9,6 +9,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.shape.Path;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -49,6 +50,7 @@ public class Master extends Application{
 		//primaryStage.show();
 		
 		PullSysInfo.pullSysInfo();
+		
 		
 		primaryStage.setTitle("T.A.C.O.");
 		
