@@ -13,8 +13,7 @@ public class StartButtonController {
 	public static boolean executeStartButton() {
 		try {
 			//Cleans bat and marks for deletion
-			BuildExecuteBat.buildBat();
-			
+			BuildExecuteBat.buildBat();			
 			
 			//Add get admin priv to top of bat
 			BuildExecuteBat.appendBat(getAdminShellFile());
@@ -28,12 +27,12 @@ public class StartButtonController {
 			
 			//Add execute cleanmgr
 			BuildExecuteBat.appendBat("cleanmgr /d %SYSTEMROOT% /sagerun:5000");
+			
 			//Add delete regkeys
 			buildModRegDeleteKeyArray();
 			BuildExecuteBat.appendBat(ModReg.getRegKeysDelete());
 			
 			BuildExecuteBat.executeBat();
-			//BuildExecuteBat.buildAndExecuteBat();
 			return true;
 			
 		} catch (Exception e) {

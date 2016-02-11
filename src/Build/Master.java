@@ -6,6 +6,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -51,6 +52,7 @@ public class Master extends Application{
 		
 		
 		primaryStage.setTitle("T.A.C.O.");
+		primaryStage.getIcons().add(new Image("file:src/Build/resources/img/icon.png"));
 		
 		BorderPane borderpane = new BorderPane();
 		

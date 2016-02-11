@@ -1,8 +1,6 @@
 .root{
 	-fx-background-color: #ffffff;
 	-fx-border: 3;
-	/*-fx-background-image: url('file:src/Build/resources/img/hk.jpg');
-	*/
 }
 
 #banner {
