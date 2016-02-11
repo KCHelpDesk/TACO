@@ -34,12 +34,12 @@ public class BuildExecuteBat {
 				output.newLine();
 			}
 			
-			for (String regKeys : ModReg.getRegKeys()){
+			for (String regKeys : ModReg.getRegKeysAdd()){
 				output.write(regKeys);
 				output.newLine();
 			}
 			
-			output.write("cleanmgr /d %SYSTEMROOT% /sagerun:5000");
+			appendBat(("cleanmgr /d %SYSTEMROOT% /sagerun:5000"));
 			
 			List<String> deleteStateFlags = Files.readAllLines(deleteStateFlagsPath);
 			for (String deleteSFlags : deleteStateFlags) {
@@ -57,7 +57,18 @@ public class BuildExecuteBat {
 	}
 	
 	public static void appendBat(List<String> list){
-		
+		BufferedWriter output;
+		try {
+			output = new BufferedWriter(new FileWriter(getBatFile()));
+			for (String string : list){
+				output.write(string);
+				output.newLine();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 	
 	public static boolean appendBat(String string){
@@ -67,6 +78,24 @@ public class BuildExecuteBat {
 			output.close();
 			return true;
 		} catch (IOException e) {
+			return false;
+		}
+	}
+	
+	public static boolean appendBat(File file){
+		Path path = file.toPath();
+		try {
+			BufferedWriter output = new BufferedWriter(new FileWriter(getBatFile()));
+			
+			List<String> lines = Files.readAllLines(path);
+			for (String line : lines){
+				output.write(line);
+				output.newLine();
+			}
+			output.close();
+			return true;
+		}
+		catch (IOException e){
 			return false;
 		}
 	}

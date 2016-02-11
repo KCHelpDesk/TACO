@@ -4,110 +4,115 @@ package Build;
 import java.util.ArrayList;
 
 public class ModReg {
-	static ArrayList<String> regKeys = new ArrayList<String>();
+	static ArrayList<String> regKeysAdd = new ArrayList<String>();
+	static ArrayList<String> regKeysDelete = new ArrayList<String>();
 	
-	public static String buildRegString(String string) {
+	public static String buildRegAddString(String string) {
 		return "reg add \"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VolumeCaches\\" + string + "\" /v StateFlags5000 /t REG_DWORD /d 2 /f";
 	}
 
 	public static void addRegServicePackCleanup() {
-		getRegKeys().add(buildRegString("Service Pack Cleanup"));		
+		getRegKeysAdd().add(buildRegAddString("Service Pack Cleanup"));		
 	}
 
 	public static void addRegOldChkDskFiles() {
-		getRegKeys().add(buildRegString("Old ChkDsk Files"));
+		getRegKeysAdd().add(buildRegAddString("Old ChkDsk Files"));
 	}
 
 	public static void addRegSystemErrorMemoryDumpFiles() {
-		getRegKeys().add(buildRegString("System error memory dump files"));
+		getRegKeysAdd().add(buildRegAddString("System error memory dump files"));
 	}
 
 	public static void addRegSystemErrorMinidumpFiles() {
-		getRegKeys().add(buildRegString("System error minidump files"));
+		getRegKeysAdd().add(buildRegAddString("System error minidump files"));
 	}
 
 	public static void addRegMemoryDumpFiles() {
-		getRegKeys().add(buildRegString("Memory Dump Files"));
+		getRegKeysAdd().add(buildRegAddString("Memory Dump Files"));
 	}
 
 	public static void addRegUpdateCleanup() {
-		getRegKeys().add(buildRegString("Update Cleanup"));
+		getRegKeysAdd().add(buildRegAddString("Update Cleanup"));
 	}
 
 	public static void addRegWindowsErrorReportingArchiveFiles() {
-		getRegKeys().add(buildRegString("Windows Error Reporting Archive Files"));
+		getRegKeysAdd().add(buildRegAddString("Windows Error Reporting Archive Files"));
 	}
 
 	public static void addRegWindowsErrorReportingQueueFiles() {
-		getRegKeys().add(buildRegString("Windows Error Reporting Queue Files"));
+		getRegKeysAdd().add(buildRegAddString("Windows Error Reporting Queue Files"));
 	}
 
 	public static void addRegWindowsErrorReportingSystemArchiveFiles() {
-		getRegKeys().add(buildRegString("Windows Error Reporting System Archive Files"));
+		getRegKeysAdd().add(buildRegAddString("Windows Error Reporting System Archive Files"));
 	}
 
 	public static void addRegWindowsErrorReportingSystemQueueFiles() {
-		getRegKeys().add(buildRegString("Windows Error Reporting System Queue Files"));
+		getRegKeysAdd().add(buildRegAddString("Windows Error Reporting System Queue Files"));
 	}
 
 	public static void addRegActiveSetupTempFolders() {
-		getRegKeys().add(buildRegString("Active Setup Temp Folders"));
+		getRegKeysAdd().add(buildRegAddString("Active Setup Temp Folders"));
 	}
 
 	public static void addRegDownloadedProgramFiles() {
-		getRegKeys().add(buildRegString("Downloaded Program Files"));
+		getRegKeysAdd().add(buildRegAddString("Downloaded Program Files"));
 	}
 
 	public static void addRegInternetCacheFiles() {
-		getRegKeys().add(buildRegString("Internet Cache Files"));
+		getRegKeysAdd().add(buildRegAddString("Internet Cache Files"));
 	}
 
 	public static void addRegTemporaryFiles() {
-		getRegKeys().add(buildRegString("Temporary Files"));
+		getRegKeysAdd().add(buildRegAddString("Temporary Files"));
 	}
 
 	public static void addRegTemporarySetupFiles() {
-		getRegKeys().add(buildRegString("Temporary Setup Files"));
+		getRegKeysAdd().add(buildRegAddString("Temporary Setup Files"));
 	}
 
 	public static void addRegBranchCache() {
-		getRegKeys().add(buildRegString("BranchCache"));
+		getRegKeysAdd().add(buildRegAddString("BranchCache"));
 	}
 
 	public static void addRegThumbnailCache() {
-		getRegKeys().add(buildRegString("Thumbnail Cache"));
+		getRegKeysAdd().add(buildRegAddString("Thumbnail Cache"));
 	}
 
 	public static void addRegWindowsDefender() {
-		getRegKeys().add(buildRegString("Windows Defender"));
+		getRegKeysAdd().add(buildRegAddString("Windows Defender"));
 	}
 
 	public static void addRegSetupLogFiles() {
-		getRegKeys().add(buildRegString("Setup Log Files"));
+		getRegKeysAdd().add(buildRegAddString("Setup Log Files"));
 	}
 
 	public static void addRegWindowsUpgradeLogFiles() {
-		getRegKeys().add(buildRegString("Windows Upgrade Log Files"));
+		getRegKeysAdd().add(buildRegAddString("Windows Upgrade Log Files"));
 	}
 
 	public static void addRegUserFilesVersions() {
-		getRegKeys().add(buildRegString("User file versions"));
+		getRegKeysAdd().add(buildRegAddString("User file versions"));
 	}
 
 	public static void addRegRecycleBin() {
-		getRegKeys().add(buildRegString("Recycle Bin"));
+		getRegKeysAdd().add(buildRegAddString("Recycle Bin"));
 	}
 
 	public static void addRegPreviousInstallations() {
-		getRegKeys().add(buildRegString("Previous Installations"));
+		getRegKeysAdd().add(buildRegAddString("Previous Installations"));
 	}
 
 	public static void addRegUpgradeDiscardedFiles() {
-		getRegKeys().add(buildRegString("Upgrade Discarded Files"));
+		getRegKeysAdd().add(buildRegAddString("Upgrade Discarded Files"));
 	}
 	
-	public static ArrayList<String> getRegKeys() {
-		return regKeys;
+	public static ArrayList<String> getRegKeysAdd() {
+		return regKeysAdd;
+	}
+	
+	public static ArrayList<String> getRegKeysDelete(){
+		return regKeysDelete;
 	}
 
 

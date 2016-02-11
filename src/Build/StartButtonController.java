@@ -6,21 +6,30 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class StartButtonController {
+	private static File adminShellFile = new File("src/Build/resources/getAdminShell.taco");
 	
 	public static boolean executeStartButton() {
 		try {
 			//Add get admin priv to top of bat
-			addAdminShell();
+			BuildExecuteBat.appendBat(getAdminShellFile());
 			//Add reg add keys
-			addModRegKeyArray();
+			buildModRegAddKeyArray();
+			BuildExecuteBat.appendBat(ModReg.getRegKeysAdd());
 			//Add execute cleanmgr
 			BuildExecuteBat.appendBat("cleanmgr /d %SYSTEMROOT% /sagerun:5000");
+			//Add delete regkeys
+			buildModRegDeleteKeyArray();
+			BuildExecuteBat.appendBat(ModReg.getRegKeysDelete());
 			
-			
-			BuildExecuteBat.buildAndExecuteBat();
+			BuildExecuteBat.executeBat();
 			return true;
 			
 		} catch (Exception e) {
@@ -28,6 +37,7 @@ public class StartButtonController {
 		}
 	}
 	
+
 	private static void addAdminShell(File batFile){
 		Path getAdmin = new File("src/Build/resources/getAdminShell.taco").toPath();
 		try {
@@ -38,13 +48,24 @@ public class StartButtonController {
 				output.write(admin);
 				output.newLine();
 			}
+			output.close();
 		}
 		catch(IOException e){
 			e.printStackTrace();
 		}
 	}
 	
-	private static void addModRegKeyArray() {
+	private static void buildModRegDeleteKeyArray() {
+		List<String> deleteArr = ModReg.getRegKeysDelete();
+		String deleteStateFlagsFileLocation = "src/Build/resources/deleteStateFlags.taco";
+		try (Stream<String> stream = Files.lines(Paths.get(deleteStateFlagsFileLocation))){
+			deleteArr = stream.collect(Collectors.toList());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private static void buildModRegAddKeyArray() {
 		if (CleanerGUI.getCheckBoxWinUpClean().isSelected()) {
 			ModReg.addRegServicePackCleanup();
 			ModReg.addRegUpdateCleanup();			
@@ -94,4 +115,7 @@ public class StartButtonController {
 		}
 	}
 
+	private static File getAdminShellFile() {
+		return adminShellFile;
+	}
 }
