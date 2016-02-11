@@ -33,13 +33,7 @@
 }
 
 .check-box:selected {
-	-fx-scale-x: 2;
-	-fx-scale-y: 2;
-	-fx-scale-z: 2;
-	-fx-padding: 8;
-	-fx-spacing: 4;
 	-fx-color: #00ff00;
-
 }
 
 .font {
