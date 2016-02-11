@@ -27,55 +27,7 @@ class StartButtonGUI implements gridPaneAlignment {
 	}
 	
 	public static void buttonAction() {
-		if (CleanerGUI.getCheckBoxWinUpClean().isSelected()) {
-			ModReg.addRegServicePackCleanup();
-			ModReg.addRegUpdateCleanup();			
-		}
-		
-		if (CleanerGUI.getCheckBoxWinErrorClean().isSelected()) {
-			ModReg.addRegMemoryDumpFiles();
-			ModReg.addRegOldChkDskFiles();
-			ModReg.addRegSystemErrorMemoryDumpFiles();
-			ModReg.addRegSystemErrorMinidumpFiles();
-			ModReg.addRegWindowsErrorReportingArchiveFiles();
-			ModReg.addRegWindowsErrorReportingQueueFiles();
-			ModReg.addRegWindowsErrorReportingSystemArchiveFiles();
-			ModReg.addRegWindowsErrorReportingSystemQueueFiles();
-		}
-		
-		if (CleanerGUI.getCheckBoxTempFilesClean().isSelected()) {
-			ModReg.addRegActiveSetupTempFolders();
-			ModReg.addRegDownloadedProgramFiles();
-			ModReg.addRegInternetCacheFiles();
-			ModReg.addRegTemporaryFiles();
-			ModReg.addRegTemporarySetupFiles();
-		}
-		
-		if (CleanerGUI.getCheckBoxCacheClean().isSelected()) {
-			ModReg.addRegBranchCache();
-			ModReg.addRegThumbnailCache();
-			ModReg.addRegWindowsDefender();
-		}
-		
-		if (CleanerGUI.getCheckBoxLogClean().isSelected()) {
-			ModReg.addRegSetupLogFiles();
-			ModReg.addRegWindowsUpgradeLogFiles();
-		}
-		
-		if (CleanerGUI.getCheckBoxFileHistoryClean().isSelected()) {
-			ModReg.addRegUserFilesVersions();
-		}
-		
-		if (CleanerGUI.getCheckBoxRecycleBinEmpty().isSelected()) {
-			ModReg.addRegRecycleBin();
-		}
-		
-		if (CleanerGUI.getCheckBoxWinOldClean().isSelected()) {
-			ModReg.addRegPreviousInstallations();
-			ModReg.addRegUpgradeDiscardedFiles();
-		}
-		
-		BuildExecuteBat.buildAndExecuteBat();
+		StartButtonController.executeStartButton();
  	}
 
 }

@@ -1,28 +1,26 @@
 package Build;
 
-import java.io.BufferedWriter;
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.io.FileReader;
+
 
 public class StartButtonController {
 	private static File adminShellFile = new File("src/Build/resources/getAdminShell.taco");
+	private static File deleteRegKeysFile = new File("src/Build/resources/deleteStateFlags.taco");
 	
 	public static boolean executeStartButton() {
 		try {
+			//Cleans bat and marks for deletion
+			BuildExecuteBat.buildBat();
+			
 			//Add get admin priv to top of bat
 			BuildExecuteBat.appendBat(getAdminShellFile());
+			
 			//Add reg add keys
 			buildModRegAddKeyArray();
 			BuildExecuteBat.appendBat(ModReg.getRegKeysAdd());
+			
 			//Add execute cleanmgr
 			BuildExecuteBat.appendBat("cleanmgr /d %SYSTEMROOT% /sagerun:5000");
 			//Add delete regkeys
@@ -30,6 +28,7 @@ public class StartButtonController {
 			BuildExecuteBat.appendBat(ModReg.getRegKeysDelete());
 			
 			BuildExecuteBat.executeBat();
+			//BuildExecuteBat.buildAndExecuteBat();
 			return true;
 			
 		} catch (Exception e) {
@@ -37,30 +36,17 @@ public class StartButtonController {
 		}
 	}
 	
-
-	private static void addAdminShell(File batFile){
-		Path getAdmin = new File("src/Build/resources/getAdminShell.taco").toPath();
-		try {
-			BufferedWriter output =  new BufferedWriter(new FileWriter(batFile));
-			
-			List<String> getAdminPriv = Files.readAllLines(getAdmin);
-			for (String admin : getAdminPriv){
-				output.write(admin);
-				output.newLine();
-			}
-			output.close();
-		}
-		catch(IOException e){
-			e.printStackTrace();
-		}
-	}
-	
 	private static void buildModRegDeleteKeyArray() {
-		List<String> deleteArr = ModReg.getRegKeysDelete();
-		String deleteStateFlagsFileLocation = "src/Build/resources/deleteStateFlags.taco";
-		try (Stream<String> stream = Files.lines(Paths.get(deleteStateFlagsFileLocation))){
-			deleteArr = stream.collect(Collectors.toList());
-		} catch (IOException e) {
+		ModReg.getRegKeysDelete().clear();
+		try {
+			BufferedReader input = new BufferedReader(new FileReader(getDeleteRegKeysFile()));
+			String string;
+			while((string = input.readLine()) != null){
+				ModReg.getRegKeysDelete().add(string);
+			}
+			input.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -117,5 +103,9 @@ public class StartButtonController {
 
 	private static File getAdminShellFile() {
 		return adminShellFile;
+	}
+	
+	private static File getDeleteRegKeysFile() {
+		return deleteRegKeysFile;
 	}
 }

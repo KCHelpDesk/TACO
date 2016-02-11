@@ -9,61 +9,34 @@ import java.nio.file.Path;
 import java.util.List;
 
 public class BuildExecuteBat {
-	private static File batFile = new File("src/Build/resources/execute.bat");
+	private static final File batFile = new File("src/Build/resources/execute.bat");
 	
 	public static File getBatFile() {
 		return batFile;
 	}
 	
-	public static void buildAndExecuteBat() {
-		boolean isBatBuilt = false;
-		isBatBuilt = buildBat();
-		if (isBatBuilt) executeBat();
-	}
-	
-	static boolean buildBat() {		
-		Path getAdmin = new File("src/Build/resources/getAdminShell.taco").toPath();
-		Path deleteStateFlagsPath = new File("src/Build/resources/deleteStateFlags.taco").toPath();
-		BufferedWriter output = null;
+	static void buildBat() {
+		//Cleans the bat and marks it for deletion.
 		try {
-			output =  new BufferedWriter(new FileWriter(getBatFile()));
-			
-			List<String> getAdminPriv = Files.readAllLines(getAdmin);
-			for (String admin : getAdminPriv){
-				output.write(admin);
-				output.newLine();
-			}
-			
-			for (String regKeys : ModReg.getRegKeysAdd()){
-				output.write(regKeys);
-				output.newLine();
-			}
-			
-			appendBat(("cleanmgr /d %SYSTEMROOT% /sagerun:5000"));
-			
-			List<String> deleteStateFlags = Files.readAllLines(deleteStateFlagsPath);
-			for (String deleteSFlags : deleteStateFlags) {
-				output.write(deleteSFlags);
-				output.newLine();
-			}
+			BufferedWriter output =  new BufferedWriter(new FileWriter(getBatFile()));
+			output.write("");
 			output.close();
-			getBatFile().deleteOnExit();
-			return true;
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return false;
-		} 
+		}
+		getBatFile().deleteOnExit();
 	}
 	
 	public static void appendBat(List<String> list){
 		BufferedWriter output;
 		try {
-			output = new BufferedWriter(new FileWriter(getBatFile()));
+			output = new BufferedWriter(new FileWriter(getBatFile(), true));
 			for (String string : list){
 				output.write(string);
 				output.newLine();
+				System.out.println(string);
 			}
+			output.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -73,8 +46,9 @@ public class BuildExecuteBat {
 	
 	public static boolean appendBat(String string){
 		try {
-			BufferedWriter output =  new BufferedWriter(new FileWriter(getBatFile()));
+			BufferedWriter output =  new BufferedWriter(new FileWriter(getBatFile(), true));
 			output.write(string);
+			output.newLine();
 			output.close();
 			return true;
 		} catch (IOException e) {
@@ -82,26 +56,27 @@ public class BuildExecuteBat {
 		}
 	}
 	
-	public static boolean appendBat(File file){
+	public static void appendBat(File file){
 		Path path = file.toPath();
+		BufferedWriter output = null;
 		try {
-			BufferedWriter output = new BufferedWriter(new FileWriter(getBatFile()));
+			output = new BufferedWriter(new FileWriter(getBatFile(),true));
 			
 			List<String> lines = Files.readAllLines(path);
 			for (String line : lines){
 				output.write(line);
 				output.newLine();
+				System.out.println(line);
 			}
 			output.close();
-			return true;
 		}
 		catch (IOException e){
-			return false;
+			e.printStackTrace();
 		}
 	}
 	
 	static void executeBat() {
-		String executeBat = new File("src/Build/resources/execute.bat").toPath().toString();
+		String executeBat = getBatFile().toString();
 		ProcessBuilder processBuilder = new ProcessBuilder("cmd.exe", "/c", executeBat);
 		processBuilder.redirectErrorStream(true);
 		Process process;
