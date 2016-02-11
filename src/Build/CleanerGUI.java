@@ -8,6 +8,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
 class CleanerGUI implements gridPaneAlignment{
+	private static CheckBox checkBoxBrowserClean = new CheckBox();
 	private static CheckBox checkBoxWinUpClean = new CheckBox();
 	private static CheckBox checkBoxWinErrorClean = new CheckBox();
 	private static CheckBox checkBoxTempFilesClean = new CheckBox();
@@ -31,6 +32,18 @@ class CleanerGUI implements gridPaneAlignment{
 		ColumnConstraints rightColumn = new ColumnConstraints();
 		gridPane.getColumnConstraints().addAll(leftColumn, rightColumn);
 		
+		Text browserTxt = new Text("Browser Cleanup");
+		Tooltip browserTip = new Tooltip("This option will clean all cached data in\n"
+				+ "many popular browsers. This includes:\n"
+				+ "Internet Explorer\n"
+				+ "Google Chrome\n"
+				+ "Mozilla Firefox\n"
+				+ "Apple Safari\n"
+				+ "Opera");
+		Tooltip.install(browserTxt, browserTip);
+		gridPane.add(getCheckBoxBrowserClean(), 0, 0);
+		gridPane.add(browserTxt, 1, 0);
+		
 		Text winUpTxt = new Text("Windows Update Cleanup");
 		Tooltip winUpTip = new Tooltip("Windows keeps copies of all installed\n"
 				+ "updates from Windows Update, even after\n"
@@ -38,8 +51,8 @@ class CleanerGUI implements gridPaneAlignment{
 				+ "Check this box to clean up Windows Updates\n"
 				+ "cache files.");
 		Tooltip.install(winUpTxt, winUpTip);
-		gridPane.add(getCheckBoxWinUpClean(), 0, 0);
-		gridPane.add(winUpTxt, 1, 0);
+		gridPane.add(getCheckBoxWinUpClean(), 0, 1);
+		gridPane.add(winUpTxt, 1, 1);
 		
 		Text winErrorTxt = new Text("Windows Error Cleanup");
 		Tooltip winErrorTip = new Tooltip("Windows keeps log files for\n"
@@ -48,8 +61,8 @@ class CleanerGUI implements gridPaneAlignment{
 				+ "that can be safely removed.\n"
 				+ "Check this box to remove these files.");
 		Tooltip.install(winErrorTxt, winErrorTip);
-		gridPane.add(getCheckBoxWinErrorClean(), 0, 1);
-		gridPane.add(winErrorTxt, 1, 1);
+		gridPane.add(getCheckBoxWinErrorClean(), 0, 2);
+		gridPane.add(winErrorTxt, 1, 2);
 		
 		Text tempFilesCleanTxt = new Text("Temporary File Cleanup");
 		Tooltip tempFileTip = new Tooltip("When installing programs and updates\n"
@@ -59,8 +72,8 @@ class CleanerGUI implements gridPaneAlignment{
 				+ "are sometimes left behind. Check this\n"
 				+ "box to remove these files.");
 		Tooltip.install(tempFilesCleanTxt, tempFileTip);
-		gridPane.add(getCheckBoxTempFilesClean(), 0, 2);
-		gridPane.add(tempFilesCleanTxt, 1, 2);
+		gridPane.add(getCheckBoxTempFilesClean(), 0, 3);
+		gridPane.add(tempFilesCleanTxt, 1, 3);
 		
 		Text cacheCleanTxt = new Text("Cache File Cleanup");
 		Tooltip cacheTip = new Tooltip("Instead of searching the entire hard drive\n"
@@ -70,8 +83,8 @@ class CleanerGUI implements gridPaneAlignment{
 				+ "files quickly accumulate and become useless.\n"
 				+ "Check this box to remove these files.");
 		Tooltip.install(cacheCleanTxt, cacheTip);
-		gridPane.add(getCheckBoxCacheClean(), 0, 3);
-		gridPane.add(cacheCleanTxt, 1, 3);
+		gridPane.add(getCheckBoxCacheClean(), 0, 4);
+		gridPane.add(cacheCleanTxt, 1, 4);
 		
 		Text logCleanTxt = new Text("Log File Cleanup");
 		Tooltip logCleanTip = new Tooltip("Everything that Windows does creates\n"
@@ -82,8 +95,8 @@ class CleanerGUI implements gridPaneAlignment{
 				+ "files can be safely removed.\n"
 				+ "Check this box to remove these files.");
 		Tooltip.install(logCleanTxt, logCleanTip);
-		gridPane.add(getCheckBoxLogClean(), 0, 4);
-		gridPane.add(logCleanTxt, 1, 4);
+		gridPane.add(getCheckBoxLogClean(), 0, 5);
+		gridPane.add(logCleanTxt, 1, 5);
 		
 		Text fileHistCleanTxt = new Text("File History Cleanup");
 		Tooltip fileHistTip = new Tooltip("Windows temporarily stores file\n"
@@ -91,14 +104,14 @@ class CleanerGUI implements gridPaneAlignment{
 				+ "to disk. Check this box to remove\n"
 				+ "these files.");
 		Tooltip.install(fileHistCleanTxt, fileHistTip);
-		gridPane.add(getCheckBoxFileHistoryClean(), 0, 5);
-		gridPane.add(fileHistCleanTxt, 1, 5);
+		gridPane.add(getCheckBoxFileHistoryClean(), 0, 6);
+		gridPane.add(fileHistCleanTxt, 1, 6);
 		
 		Text recycleBinEmptyTxt = new Text("Empty Recycle Bin");
 		Tooltip recycleBinTip = new Tooltip("Check this box to Empty Recycle Bin.");
 		Tooltip.install(recycleBinEmptyTxt, recycleBinTip);
-		gridPane.add(getCheckBoxRecycleBinEmpty(), 0, 6);
-		gridPane.add(recycleBinEmptyTxt, 1, 6);
+		gridPane.add(getCheckBoxRecycleBinEmpty(), 0, 7);
+		gridPane.add(recycleBinEmptyTxt, 1, 7);
 		
 		Text winOldCleanTxt = new Text("Previous Windows Install Cleanup");
 		if (!PullSysInfo.isExistWindowsOld()) {
@@ -117,10 +130,14 @@ class CleanerGUI implements gridPaneAlignment{
 					+ "is irreversable.");
 			Tooltip.install(winOldCleanTxt, winOldTip);
 		}
-		gridPane.add(getCheckBoxWinOldClean(), 0, 7);
-		gridPane.add(winOldCleanTxt, 1, 7);
+		gridPane.add(getCheckBoxWinOldClean(), 0, 8);
+		gridPane.add(winOldCleanTxt, 1, 8);
 		
 		return gridPane;
+	}
+	
+	public static CheckBox getCheckBoxBrowserClean() {
+		return checkBoxBrowserClean;
 	}
 
 	public static CheckBox getCheckBoxWinUpClean() {

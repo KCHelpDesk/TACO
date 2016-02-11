@@ -34,7 +34,6 @@ public class BuildExecuteBat {
 			for (String string : list){
 				output.write(string);
 				output.newLine();
-				System.out.println(string);
 			}
 			output.close();
 		} catch (IOException e) {
@@ -66,7 +65,6 @@ public class BuildExecuteBat {
 			for (String line : lines){
 				output.write(line);
 				output.newLine();
-				System.out.println(line);
 			}
 			output.close();
 		}

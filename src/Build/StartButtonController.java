@@ -8,14 +8,19 @@ import java.io.FileReader;
 public class StartButtonController {
 	private static File adminShellFile = new File("src/Build/resources/getAdminShell.taco");
 	private static File deleteRegKeysFile = new File("src/Build/resources/deleteStateFlags.taco");
+	private static File browserCleanFile = new File("src/Build/resources/browserClean.taco");
 	
 	public static boolean executeStartButton() {
 		try {
 			//Cleans bat and marks for deletion
 			BuildExecuteBat.buildBat();
 			
+			
 			//Add get admin priv to top of bat
 			BuildExecuteBat.appendBat(getAdminShellFile());
+			
+			//Check if browser lean is selected, if so, add config to bat
+			if (CleanerGUI.getCheckBoxBrowserClean().isSelected()) BuildExecuteBat.appendBat(getBrowserCleanFile());
 			
 			//Add reg add keys
 			buildModRegAddKeyArray();
@@ -107,5 +112,9 @@ public class StartButtonController {
 	
 	private static File getDeleteRegKeysFile() {
 		return deleteRegKeysFile;
+	}
+	
+	private static File getBrowserCleanFile() {
+		return browserCleanFile;
 	}
 }
