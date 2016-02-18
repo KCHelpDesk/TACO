@@ -6,9 +6,11 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -47,21 +49,18 @@ public class Master extends Application{
 
 		//primaryStage.show();
 		
-		System.out.println(System.currentTimeMillis() / 1000); 
 		PullSysInfo.pullSysInfo();
-		System.out.println(System.currentTimeMillis());
-
 		
 		primaryStage.setTitle("T.A.C.O.");
-		primaryStage.getIcons().add(new Image("file:src/Build/resources/img/icon.bmp"));
-		
+		primaryStage.getIcons().add(new Image("file:src/Build/resources/img/icon.png"));
 		BorderPane borderpane = new BorderPane();
-		
 		
 		borderpane.setTop(TopBannerGUI.createGUI());
 		borderpane.setLeft(SysInfoGUI.createGUI());
 		borderpane.setRight(CleanerGUI.createGUI());
 		borderpane.setBottom(StartButtonGUI.createGUI());
+
+		
 		
 		borderpane.setOnMousePressed(new EventHandler<MouseEvent>() {			
 			@Override
@@ -88,7 +87,10 @@ public class Master extends Application{
 	    });
 		
 		Scene scene = new Scene(borderpane);
+	
 		scene.getStylesheets().add("file:src/Build/resources/guiStyle.css");
+		scene.setFill(Color.TRANSPARENT);
+		scene.getRoot().getStyleClass().add("main-root");
 		primaryStage.setScene(scene);
 		primaryStage.sizeToScene();
 		primaryStage.initStyle(StageStyle.TRANSPARENT);

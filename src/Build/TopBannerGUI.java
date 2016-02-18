@@ -10,7 +10,7 @@ import javafx.scene.layout.GridPane;
 
 public class TopBannerGUI {
 	private static Button exitButton = new Button();
-	private static Image banner = new Image("file:src/Build/resources/img/banner.jpg");
+	private static Image banner = new Image("file:src/Build/resources/img/banner.png");
 	
 	/*
 	public static GridPane createGUI() {
@@ -47,6 +47,8 @@ public class TopBannerGUI {
 	public static BorderPane createGUI(){
 		//Build ImageView
 		ImageView bannerView = new ImageView(getBanner());
+		
+		//bannerView.
 				
 		//Set ID's
 		bannerView.setId("banner");
