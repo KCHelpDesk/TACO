@@ -47,7 +47,7 @@ public class Master extends Application{
 
 		//primaryStage.show();
 		
-		System.out.println(System.currentTimeMillis() / 1000);
+		System.out.println(System.currentTimeMillis() / 1000); 
 		PullSysInfo.pullSysInfo();
 		System.out.println(System.currentTimeMillis());
 

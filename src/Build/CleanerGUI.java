@@ -7,7 +7,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
-class CleanerGUI implements gridPaneAlignment{
+class CleanerGUI implements gridPaneAlignment{ 
 	private static CheckBox checkBoxBrowserClean = new CheckBox();
 	private static CheckBox checkBoxWinUpClean = new CheckBox();
 	private static CheckBox checkBoxWinErrorClean = new CheckBox();

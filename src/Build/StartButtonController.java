@@ -13,7 +13,7 @@ public class StartButtonController {
 	public static boolean executeStartButton() {
 		try {
 			//Cleans bat and marks for deletion
-			BuildExecuteBat.buildBat();			
+			BuildExecuteBat.buildBat();	 		 
 			
 			//Add get admin priv to top of bat
 			BuildExecuteBat.appendBat(getAdminShellFile());

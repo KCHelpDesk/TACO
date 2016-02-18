@@ -14,7 +14,7 @@ class SysInfoGUI implements gridPaneAlignment{
 	private static Text sysSerial = new Text(PullSysInfo.getSysSerial());
 	private static Text compName = new Text(PullSysInfo.getCompName());
 	private static Text procModel = new Text(PullSysInfo.getProcessorModel());
-	private static Text totalMem = new Text(PullSysInfo.getTotalMem());
+	private static Text totalMem = new Text(PullSysInfo.getTotalMem());  
 	private static Text hddSize = new Text(PullSysInfo.getHddTotalGB());
 	private static Text hddFree = new Text(PullSysInfo.getHddFreeGB());
 	private static Text localIP = new Text(PullSysInfo.getLocalIP());

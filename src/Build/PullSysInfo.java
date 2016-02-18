@@ -83,7 +83,7 @@ class PullSysInfo {
 		else return "Not Connected";
 	}
 	
-	public static String getGateway() {
+	public static String getGateway() { 
 		String gateway = runWMICcmd("wmic nicconfig where ipenabled=true get defaultipgateway");
 		if (!gateway.equals("")) return gateway.split("\"")[1];
 		else return "Not Connected";		

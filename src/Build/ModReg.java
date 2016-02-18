@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class ModReg {
 	static ArrayList<String> regKeysAdd = new ArrayList<String>();
-	static ArrayList<String> regKeysDelete = new ArrayList<String>();
+	static ArrayList<String> regKeysDelete = new ArrayList<String>(); 
 	
 	public static String buildRegAddString(String string) {
 		return "reg add \"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VolumeCaches\\" + string + "\" /v StateFlags5000 /t REG_DWORD /d 2 /f";

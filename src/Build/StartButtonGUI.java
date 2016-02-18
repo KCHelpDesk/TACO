@@ -10,8 +10,8 @@ class StartButtonGUI implements gridPaneAlignment {
 	static GridPane createGUI() {
 		GridPane gridPane = new GridPane();
 		
-		gridPaneAlignment.gridPaneAlign(gridPane);
-		
+		gridPaneAlignment.gridPaneAlign(gridPane); 
+		 
 		gridPane.setAlignment(Pos.BOTTOM_CENTER);
 		
 		getButtonStart().setId("start-button");

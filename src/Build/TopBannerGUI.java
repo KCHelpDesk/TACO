@@ -5,15 +5,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBase;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
 public class TopBannerGUI {
 	private static Button exitButton = new Button();
 	private static Image banner = new Image("file:src/Build/resources/img/banner.jpg");
-
+	
+	/*
 	public static GridPane createGUI() {
 		//Build gridpane
-		GridPane topGridPane = new GridPane();
+		GridPane topGridPane = new GridPane(); 
 		GridPane bannerGridPane = new GridPane();
 		
 		//Build ImageView
@@ -40,6 +42,26 @@ public class TopBannerGUI {
 				
 		return masterGridPane;
 	}
+	*/
+	
+	public static BorderPane createGUI(){
+		//Build ImageView
+		ImageView bannerView = new ImageView(getBanner());
+				
+		//Set ID's
+		bannerView.setId("banner");
+		getExitButton().setId("exit-button");
+		
+		BorderPane.setAlignment(getExitButton(), Pos.TOP_RIGHT);
+		
+		BorderPane bp = new BorderPane();
+		bp.setTop(getExitButton());
+		bp.setCenter(bannerView);
+		
+		return bp;
+	}
+	
+	
 
 	public static ButtonBase getExitButton() {
 		return exitButton;
