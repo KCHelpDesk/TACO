@@ -96,9 +96,11 @@ class PullSysInfo {
 			URL publicIP = new URL("http://checkip.amazonaws.com");
 			reader = new BufferedReader(new InputStreamReader(publicIP.openStream()));
 			address = reader.readLine();
-			return address;
+			if (address.length() <= 15) {
+				return address;
+			}else return "No Public IP";
 		} catch (Exception e) {
-			return "Not Connected";
+			return "No Public IP";
 		}
 	}
 	

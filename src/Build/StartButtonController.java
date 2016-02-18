@@ -56,6 +56,7 @@ public class StartButtonController {
 	}
 	
 	private static void buildModRegAddKeyArray() {
+		ModReg.getRegKeysAdd().clear();
 		if (CleanerGUI.getCheckBoxWinUpClean().isSelected()) {
 			ModReg.addRegServicePackCleanup();
 			ModReg.addRegUpdateCleanup();			

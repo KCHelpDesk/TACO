@@ -37,8 +37,7 @@ public class Master extends Application{
     */
 	
 	public static void main(String[] args) {
-		Application.launch(args);
-		
+		Application.launch(args);		
 	}
 
 	
@@ -48,11 +47,13 @@ public class Master extends Application{
 
 		//primaryStage.show();
 		
+		System.out.println(System.currentTimeMillis() / 1000);
 		PullSysInfo.pullSysInfo();
-		
+		System.out.println(System.currentTimeMillis());
+
 		
 		primaryStage.setTitle("T.A.C.O.");
-		primaryStage.getIcons().add(new Image("file:src/Build/resources/img/icon.png"));
+		primaryStage.getIcons().add(new Image("file:src/Build/resources/img/icon.bmp"));
 		
 		BorderPane borderpane = new BorderPane();
 		
