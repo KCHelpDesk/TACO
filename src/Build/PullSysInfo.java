@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.ArrayList;
 
 class PullSysInfo {
 	private static Double hddFreeGB;
@@ -66,8 +67,12 @@ class PullSysInfo {
 	}
 	
 	public static String getTotalMem() {
-		String totalMem = runWMICcmd("wmic memorychip get capacity");
-		Double mem = (Double.valueOf(totalMem) / 1024) / 1024;
+		ArrayList<String> totalMem = runCMD("wmic memorychip get capacity");
+		double mem = 0;
+		for (String string : totalMem){
+			mem = mem + Double.valueOf(string);
+		}
+		mem = ((mem / 1024) / 1024);
 		return mem + " MB";
 	}
 	
@@ -122,6 +127,34 @@ class PullSysInfo {
 			return "Error building Process";
 		} catch (InterruptedException e) {
 			return "Error building Process";
+		}
+	}
+	
+	private static ArrayList<String> runCMD(String string){
+		ProcessBuilder processBuilder = new ProcessBuilder("cmd.exe", "/c", string);
+		processBuilder.redirectErrorStream(true);
+		Process process;
+		ArrayList<String> returnArr = new ArrayList<String>();
+		try {
+			process = processBuilder.start();
+			process.waitFor();
+			BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+			String temp = null;
+			for (int i = 0; i <= 20; i++){
+				temp = reader.readLine();
+				if (i > 1){
+					System.out.println(temp);
+					if (temp.equals("")){
+						break;
+					}else returnArr.add(temp);
+					}
+				}
+			return returnArr;
+		}
+		catch (Exception e){
+			ArrayList<String> error = new ArrayList<String>();
+			error.add("Error");
+			return error;
 		}
 	}
 
