@@ -24,6 +24,12 @@
 	-fx-effect: dropshadow( gaussian  , -main-font-color-red , 12, 0.0 , 0 , 0);
 }
 
+.main-root:hover {
+	-fx-padding: 13;
+	-fx-background-insets: 11;
+	-fx-effect: dropshadow( gaussian  , -main-font-color-blue , 20, 0.2 , 0 , 0);
+}
+
 .label {
 	-fx-text-fill: -main-font-color-red;
 	-fx-font-style: italic;
@@ -86,17 +92,20 @@
 	-fx-graphic: url('file:src/Build/resources/img/start.png');
 	-fx-background-color: -main-bg-color;
 	-fx-padding: -1;
-	-fx-effect: dropshadow( gaussian  , -main-font-color-red , 10, 0.5 , 0 , 0);
+	-fx-effect: dropshadow( gaussian  , -main-font-color-blue , 10, 0.9 , 0 , 0);
+	
 }
 
 #start-button:hover:pressed {
 	-fx-graphic: url('file:src/Build/resources/img/startPressed.png');
 	-fx-background-color: -main-bg-color;
-	-fx-padding: 0;
+	-fx-padding: -1;
+	-fx-effect: dropshadow( gaussian  , #051f47 , 10, 0.9 , 0 , 0);
 }
 
 #start-button:hover {
 	-fx-graphic: url('file:src/Build/resources/img/startHover.png');
 	-fx-background-color: -main-bg-color;
-	-fx-padding: 0;
+	-fx-padding: -1;
+	-fx-effect: dropshadow( gaussian  , #0c47a6 , 10, 0.9 , 0 , 0);
 }

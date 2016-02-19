@@ -41,9 +41,12 @@ class PullSysInfo {
 	}
 	
 	public static String getWinVersion() {
+		/*
 		String osName = System.getProperty("os.name");
 		String osVersion = "Ver: " + System.getProperty("os.version");
 		return osName + " " + osVersion;
+		*/
+		return runWMICcmd("wmic OS GET Caption");
 	}
 	
 	public static String getSysManufacturer() {
