@@ -41,11 +41,6 @@ class PullSysInfo {
 	}
 	
 	public static String getWinVersion() {
-		/*
-		String osName = System.getProperty("os.name");
-		String osVersion = "Ver: " + System.getProperty("os.version");
-		return osName + " " + osVersion;
-		*/
 		return runWMICcmd("wmic OS GET Caption");
 	}
 	
@@ -73,7 +68,7 @@ class PullSysInfo {
 		ArrayList<String> totalMem = runCMD("wmic memorychip get capacity");
 		double mem = 0;
 		for (String string : totalMem){
-			mem = mem + Double.valueOf(string);
+			mem += Double.valueOf(string);
 		}
 		mem = ((mem / 1024) / 1024);
 		return mem + " MB";
@@ -146,7 +141,6 @@ class PullSysInfo {
 			for (int i = 0; i <= 20; i++){
 				temp = reader.readLine();
 				if (i > 1){
-					System.out.println(temp);
 					if (temp.equals("")){
 						break;
 					}else returnArr.add(temp);

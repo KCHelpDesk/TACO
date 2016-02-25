@@ -9,7 +9,7 @@ import javafx.scene.layout.BorderPane;
 
 public class TopBannerGUI {
 	private static Button exitButton = new Button();
-	private static Image banner = new Image("file:src/Build/resources/img/banner.png");
+	private static Image banner = BannerControl.getBanner();
 	
 	public static BorderPane createGUI(){
 		//Build ImageView

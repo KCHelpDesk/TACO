@@ -25,30 +25,16 @@ public class Master extends Application{
 	final Delta dragDelta = new Delta();
 	final BooleanProperty inDrag = new SimpleBooleanProperty();
 	
-	/*
-    private Scene createPreloaderScene() {
-    	//File imageFile = new File("src/Build/resources/hellokitty.jpg");
-    	Image image = new Image("file:src/Build/resources/hellokitty.jpg");
-    	ImageView imageView = new ImageView();
-        imageView.setImage(image);
-        BorderPane p = new BorderPane();
-        p.setCenter(imageView);
-        return new Scene(p, 600, 575);        
-    }
-    */
-	
 	public static void main(String[] args) {
 		Application.launch(args);		
 	}
 
 	
 	public void start(Stage primaryStage) throws IOException {	
-		//this.stage = primaryStage;
-		//primaryStage.setScene(createPreloaderScene());
-
-		//primaryStage.show();
 		
 		PullSysInfo.pullSysInfo();
+		BannerControl.buildDateFile();
+		BannerControl.checkDate();
 		
 		primaryStage.setTitle("T.A.C.O.");
 		primaryStage.getIcons().add(new Image("file:src/Build/resources/img/icon.png"));

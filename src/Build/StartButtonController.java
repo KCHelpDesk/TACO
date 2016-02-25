@@ -25,6 +25,9 @@ public class StartButtonController {
 			buildModRegAddKeyArray();
 			BuildExecuteBat.appendBat(ModReg.getRegKeysAdd());
 			
+			//Speed up registry
+			BuildExecuteBat.appendBat("regedit /s skipCleanMGRScan.reg");
+			
 			//Add execute cleanmgr
 			BuildExecuteBat.appendBat("cleanmgr /d %SYSTEMROOT% /sagerun:5000");
 			
