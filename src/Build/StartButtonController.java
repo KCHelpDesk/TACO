@@ -6,9 +6,9 @@ import java.io.FileReader;
 
 
 public class StartButtonController {
-	private static File adminShellFile = new File("src/Build/resources/getAdminShell.taco");
-	private static File deleteRegKeysFile = new File("src/Build/resources/deleteStateFlags.taco");
-	private static File browserCleanFile = new File("src/Build/resources/browserClean.taco");
+	private static File adminShellFile = new File("resources/getAdminShell.taco");
+	private static File deleteRegKeysFile = new File("resources/deleteStateFlags.taco");
+	private static File browserCleanFile = new File("resources/browserClean.taco");
 	
 	public static boolean executeStartButton() {
 		try {
@@ -26,7 +26,7 @@ public class StartButtonController {
 			BuildExecuteBat.appendBat(ModReg.getRegKeysAdd());
 			
 			//Speed up registry
-			BuildExecuteBat.appendBat("regedit /s skipCleanMGRScan.reg");
+			//BuildExecuteBat.appendBat("regedit /s skipCleanMGRScan.reg");
 			
 			//Add execute cleanmgr
 			BuildExecuteBat.appendBat("cleanmgr /d %SYSTEMROOT% /sagerun:5000");

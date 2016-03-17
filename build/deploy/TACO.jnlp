@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="TACO.jnlp">
+  <information>
+    <title>TACO</title>
+    <vendor>KCHelpDesk</vendor>
+    <description>KChelpDesk Tool</description>
+    <offline-allowed/>
+  <shortcut><desktop/></shortcut>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="TACO.jar" size="18984" download="eager" />
+  </resources>
+<security>
+  <all-permissions/>
+</security>
+  <jfx:javafx-desc  width="0" height="0" main-class="Build.Master"  name="KChelpDesk Tool" />
+  <update check="background"/>
+</jnlp>

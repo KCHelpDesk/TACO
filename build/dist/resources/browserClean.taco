@@ -1,0 +1,6 @@
+COPY ccsetup514.taco ccsetup514.exe
+ccsetup514.exe /S /D=%SystemDrive%\CCleaner
+COPY ccconfig.taco %SystemDrive%\CCleaner\ccleaner.ini
+%SystemDrive%\CCleaner\CCleaner64.exe /AUTO
+%SystemDrive%\CCleaner\uninst.exe /S
+DEL /F ccsetup514.exe

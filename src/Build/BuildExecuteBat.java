@@ -9,7 +9,7 @@ import java.nio.file.Path;
 import java.util.List;
 
 public class BuildExecuteBat {
-	private static final File batFile = new File("src/Build/resources/execute.bat");
+	private static final File batFile = new File("resources/execute.bat");
 	
 	public static File getBatFile() {
 		return batFile;

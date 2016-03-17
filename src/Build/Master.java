@@ -37,7 +37,7 @@ public class Master extends Application{
 		BannerControl.checkDate();
 		
 		primaryStage.setTitle("T.A.C.O.");
-		primaryStage.getIcons().add(new Image("file:src/Build/resources/img/icon.png"));
+		primaryStage.getIcons().add(new Image("file:resources/img/icon.png"));
 		BorderPane borderpane = new BorderPane();
 		
 		borderpane.setTop(TopBannerGUI.createGUI());
@@ -73,7 +73,7 @@ public class Master extends Application{
 		
 		Scene scene = new Scene(borderpane);
 	
-		scene.getStylesheets().add("file:src/Build/resources/guiStyle.css");
+		scene.getStylesheets().add("file:resources/guiStyle.css");
 		scene.setFill(Color.TRANSPARENT);
 		scene.getRoot().getStyleClass().add("main-root");
 		primaryStage.setScene(scene);

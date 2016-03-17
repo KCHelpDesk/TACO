@@ -13,7 +13,7 @@ import javafx.scene.image.Image;
 
 public class BannerControl {
 	private static Image banner;
-	private static File dateFile = new File("src/Build/resources/date.taco");
+	private static File dateFile = new File("resources/date.taco");
 	
 	public static Image getBanner() {
 		// TODO Auto-generated method stub
@@ -24,16 +24,16 @@ public class BannerControl {
 		if (getDateFile().exists()){
 			String installDate;
 			try {
-				installDate = new String(Files.readAllBytes(Paths.get("src/Build/resources/date.taco")));
+				installDate = new String(Files.readAllBytes(Paths.get("resources/date.taco")));
 				installDate.trim();
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 				LocalDate date = LocalDate.parse(installDate, formatter);
 				LocalDate sixMonths = date.plusMonths(6);
 				if (LocalDate.now().isAfter(sixMonths) && LocalDate.now().isBefore(sixMonths.plusMonths(2))){
-					setBanner("file:src/Build/resources/img/coupon.png");
+					setBanner("file:resources/img/coupon.png");
 				}
 				else{
-					setBanner("file:src/Build/resources/img/banner.png");
+					setBanner("file:resources/img/banner.png");
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
